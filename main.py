@@ -1,6 +1,10 @@
-from PIL import Image
+from PIL import Image, ImageChops
 
-image = Image.open("image_round3.png")
+image = Image.open("image_round.png")
+lens = Image.open("lens.png")
+
+image = ImageChops.subtract(image, lens)
+
 width, height = image.size
 pixels = image.load()
 

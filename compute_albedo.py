@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from PIL import Image, ImageChops
 
 
@@ -11,7 +13,8 @@ def compute(file_path):
     image = Image.open(file_path)
     if image.mode == "RGB":
         image.putalpha(255)
-    lens = Image.open("helper_images/lens_transparent.png")
+    dir_path = Path(__file__).parent.resolve()
+    lens = Image.open(dir_path / "helper_images" / "lens_transparent.png")
 
     # we subtract the lens from the image (the black zone from margins)
     image = ImageChops.subtract(image, lens)

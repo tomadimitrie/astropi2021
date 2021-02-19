@@ -1,7 +1,8 @@
+from pathlib import Path
+
 import numpy as np
 from PIL import Image
 from scipy import linalg
-import helpers
 
 
 def compute_normals(light_matrix, mask_array, image_array, threshold=100):
@@ -104,15 +105,16 @@ def simple_photometric_stereo(image_file, mask_image_file, light_directions):
 
 def compute(file_path, light_directions):
     """
-    Funtion that saves the normal and albedo maps of an image
+    Function that saves the normal and albedo maps of an image
     :param file_path: the path to the image to compute on
     :param light_directions: the light directions for that image (previously computed)
     :return: -
     """
-    file_name = helpers.get_file_name_from_path(file_path)
+    file_name = file_path.split("/")[-1]
+    dir_path = Path(__file__).parent.resolve()
     data = simple_photometric_stereo(
         file_path,
-        'helper_images/lens_white.png',
+        dir_path / 'helper_images' / 'lens_white.png',
         light_directions
     )
 
@@ -123,5 +125,5 @@ def compute(file_path, light_directions):
     normal_map = Image.fromarray(normal_array)
     albedo_map = Image.fromarray(albedo_array)
 
-    normal_map.save(f"output_normals/{file_name}.png")
-    albedo_map.save(f"output_albedos/{file_name}.png")
+    normal_map.save(dir_path / "output_normals" / file_name)
+    albedo_map.save(dir_path / "output_albedos" / file_name)

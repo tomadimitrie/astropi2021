@@ -2,6 +2,8 @@ from PIL import Image
 import numpy
 import math
 
+import helpers
+
 
 def compute_centroid(im_array, threshold=100):
     valid = [point for point, value in numpy.ndenumerate(im_array) if value > threshold]
@@ -46,8 +48,9 @@ def compute_light_directions(image_file, mask_image_file):
     return n
 
 
-def compute():
-    light_directions = compute_light_directions("image.jpg", "lens_white.png")
+def compute(file_path):
+    light_directions = compute_light_directions(file_path, "helper_images/lens_white.png")
 
-    with open('output.txt', 'w') as output_file:
-        output_file.write('%lf %lf %lf\n' % (light_directions[0], light_directions[1], light_directions[2]))
+    file_name = helpers.get_file_name_from_path(file_path)
+    with open(f"output_light_directions/{file_name}.txt", 'w') as output_file:
+        output_file.write(" ".join([str(direction) for direction in light_directions]))

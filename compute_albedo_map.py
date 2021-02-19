@@ -45,13 +45,8 @@ def compute_albedo(light_matrix, mask_array, image_array, normal_map, threshold=
     return albedo_map
 
 
-def read_lights_file(lights_file):
-    with open(lights_file) as file:
-        return [[float(number) for number in file.read().split(' ')]]
-
-
-def simple_photometric_stereo(image_file, mask_image_file, lights_file, threshold=25):
-    lights = read_lights_file(lights_file)
+def simple_photometric_stereo(image_file, mask_image_file, light_directions, threshold=25):
+    lights = [light_directions]
     mask_image = Image.open(mask_image_file)
     mask_image_gray = mask_image.convert("L")
     mask_image_array = np.asarray(mask_image_gray)
@@ -67,12 +62,12 @@ def simple_photometric_stereo(image_file, mask_image_file, lights_file, threshol
     return normal_map, albedo_map
 
 
-def compute(file_path):
+def compute(file_path, light_directions):
     file_name = helpers.get_file_name_from_path(file_path)
     data = simple_photometric_stereo(
         file_path,
         'helper_images/lens_white.png',
-        f"output_light_directions/{file_name}.txt"
+        light_directions
     )
 
     normal_array = (data[0] * 255).astype(np.uint8)

@@ -8,7 +8,6 @@ def compute(file_path):
     lens = Image.open("helper_images/lens_transparent.png")
 
     image = ImageChops.subtract(image, lens)
-    image.show()
 
     width, height = image.size
     pixels = image.load()

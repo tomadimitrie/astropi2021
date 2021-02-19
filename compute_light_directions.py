@@ -17,6 +17,8 @@ def compute_centroid(im_array, threshold=100):
     xs = sum([point[0] for point in valid])
     ys = sum([point[1] for point in valid])
     tot = len(valid)
+    if tot == 0:
+        return None
     return xs / tot, ys / tot
 
 
@@ -52,6 +54,8 @@ def compute_light_directions(image_file, mask_image_file):
     mask_image_gray = mask_image.convert("L")
     mask_image_array = numpy.asarray(mask_image_gray)
     mask_centroid = compute_centroid(mask_image_array)
+    if mask_centroid is None:
+        return None
 
     # we compute the radius of the mask
     mask_radius = compute_radius(mask_image_array, mask_centroid)
@@ -62,6 +66,8 @@ def compute_light_directions(image_file, mask_image_file):
 
     # we compute the centroid of the given image (minus the masked region)
     centroid = compute_centroid(image_array)
+    if centroid is None:
+        return None
 
     # we compute the small distances in both coordinates between the coordinates of the centre pixel of the mask image,
     # and the coordinates of the centre pixel of the actual image
@@ -86,4 +92,7 @@ def compute(file_path):
     :return: the light directions for the image located at that path
     """
     dir_path = Path(__file__).parent.resolve()
-    return compute_light_directions(file_path, dir_path / "helper_images" / "lens_white.png").tolist()
+    values = compute_light_directions(file_path, str(dir_path / "helper_images" / "lens_white.png"))
+    if values is None:
+        return None
+    return values.tolist()

@@ -110,7 +110,7 @@ def compute(file_path, light_directions):
     :param light_directions: the light directions for that image (previously computed)
     :return: -
     """
-    file_name = file_path.parts[-1]
+    file_name = file_path.split("/")[-1]
     dir_path = Path(__file__).parent.resolve()
     data = simple_photometric_stereo(
         file_path,

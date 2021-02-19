@@ -13,10 +13,10 @@ if __name__ == "__main__":
     energy, temperature = compute_temperature.compute_temperature_no_greenhouse(albedo)
     optimized_albedo = compute_albedo.compute("output_albedos/image.png")
     optimized_energy, optimized_temperature = compute_temperature.compute_temperature_no_greenhouse(optimized_albedo)
-    
+
     dir_path = Path(__file__).parent.resolve()
     data_file = dir_path / "data01.csv"
-
+    
     with open(data_file, 'w') as file:
         writer = csv.writer(file)
         header = (

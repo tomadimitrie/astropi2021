@@ -2,3 +2,8 @@ venv/
 .idea/
 .DS_Store
 __pycache__/
+images/*
+output_albedos/*
+output_normals/*
+*.csv
+*.log

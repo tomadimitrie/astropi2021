@@ -95,4 +95,5 @@ def compute(file_path):
     values = compute_light_directions(file_path, str(dir_path / "helper_images" / "lens_white.png"))
     if values is None:
         return None
+
     return values.tolist()

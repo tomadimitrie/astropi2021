@@ -1,6 +1,6 @@
 from PIL import Image, ImageChops
 
-image = Image.open("image_round.png")
+image = Image.open("output_albedo.png").convert("RGBA")
 lens = Image.open("lens.png")
 
 image = ImageChops.subtract(image, lens)
@@ -20,3 +20,11 @@ for i in range(width):
 
 avg = sum(albedos) / len(albedos)
 print(avg)
+
+
+# import compute_light_directions
+#
+# compute_light_directions.compute()
+
+# import simple_photometric_stereo
+# simple_photometric_stereo.compute()

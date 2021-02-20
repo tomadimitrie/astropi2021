@@ -6,6 +6,8 @@
 
 ## Technicalities
 The code is intended for the RaspberryPi 3B+, and was tested on Python 3.5 but should also work on older versions of Python3 :snake:
+The images are like this:
+![Sample image from the ISS](./sample.jpg)
 ## Purpose of this project
 We intend to calculate the albedo values of the photographed surfaces of Earth from the ISS. By gathering this information, we are able to discover the theoretical temperature in that
 area and make assumptions about greenhouse effect and aerosols, thus reaching a conclusion on the climate state of our planet. :earth_africa:

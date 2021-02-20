@@ -1,4 +1,4 @@
-# astropi2021
+# Computing the albedo from images taken from the ISS of the Earth
 ## Table of contents
 * [Technicalities](#technicalities)
 * [Purpose of this project](#purpose-of-this-project)
@@ -6,8 +6,16 @@
 
 ## Technicalities
 The code is intended for the RaspberryPi 3B+, and was tested on Python 3.5 but should also work on older versions of Python3 :snake:
-The images are like this:
-./sample_earth.png
+
+The images photographed from the ISS are like this:
+
+![Earth from the ISS](./sample_earth.png)
+
+and many other examples here:
+
+https://projects.raspberrypi.org/en/projects/code-for-your-astro-pi-mission-space-lab-experiment/1
+
+For those images, we need to ignore the lens margins, so we made some helper images to subtract that pixels from the original photos, and then make the computations.
 ## Purpose of this project
 We intend to calculate the albedo values of the photographed surfaces of Earth from the ISS. By gathering this information, we are able to discover the theoretical temperature in that
 area and make assumptions about greenhouse effect and aerosols, thus reaching a conclusion on the climate state of our planet. :earth_africa:

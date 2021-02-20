@@ -1,4 +1,4 @@
-# Computing the albedo from images taken from the ISS of the Earth
+# Computing the albedo from images of the Earth taken from the ISS
 ## Table of contents
 * [Technicalities](#technicalities)
 * [Purpose of this project](#purpose-of-this-project)

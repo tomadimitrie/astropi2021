@@ -5,7 +5,7 @@
 * [Algorithm and meaning](#algorithm-and-meaning)
 
 ## Technicalities
-The code is intended for the RaspberryPi 3B+, and was tested on Python 3.5 but should also work on older versions of Python3 :snake:
+The code is intended for the RaspberryPi 3B+ and was tested on Python 3.5 (that's what we had to use for the Astro Pi contest), but should also work on other versions of Python 3 :snake:
 
 The images photographed from the ISS are like this:
 
